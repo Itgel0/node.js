@@ -1,7 +1,59 @@
-const express = require("express");
-
+const express = require('express');
+const bodyParser = require('body-parser');
 const port = 8000;
 const app = express();
+
+const route = require('./route');
+
+app.use(bodyParser.json());
+app.use('/', route);
+
+app.listen(port, () => {
+    console.log(`express app listening on http://localhost:${port}`)
+});
+// const express = require("express");
+
+// const port = 8000;
+// const app = express();
+
+
+
+// const posts = [
+//   {
+//     id: 1,
+//     title: "my dog",
+//     desc: "",
+//   },
+//   {
+//     id: 2,
+//     title: "my dog",
+//     desc: "",
+//   },
+//   {
+//     id: 3,
+//     title: "my dog",
+//     desc: "",
+//   },
+// ];
+
+// app.get("/", (req, res) => {
+//   res.send("hi˝");
+// });
+// app.get("/posts", (req, res) => {
+//   res.send(posts);
+// });
+
+// app.get("/posts/:id", (req, res) => {
+//   for (let i = 0; i < posts.length; i++) {
+//     if (posts[i].id == req.params.id) res.send(posts[i]);
+//   }
+
+//   res.send("not found");
+// });
+
+// app.post('/posts/', () => {
+  
+// })
 
 // const router = express.Router();
 // const {
@@ -20,44 +72,6 @@ const app = express();
 //   .delete("/:id", deleteUser);
 
 // module.exports = router;
-
-const posts = [
-  {
-    id: 1,
-    title: "my dog",
-    desc: "",
-  },
-  {
-    id: 2,
-    title: "my dog",
-    desc: "",
-  },
-  {
-    id: 3,
-    title: "my dog",
-    desc: "",
-  },
-];
-
-app.get("/", (req, res) => {
-  res.send("hi˝");
-});
-app.get("/posts", (req, res) => {
-  res.send(posts);
-});
-
-app.get("/posts/:id", (req, res) => {
-  for (let i = 0; i < posts.length; i++) {
-    if (posts[i].id == req.params.id) res.send(posts[i]);
-  }
-
-  res.send("not found");
-});
-
-app.post('/posts/', () => {
-  
-})
-
 // post
 // put
 // delete
@@ -70,6 +84,6 @@ app.post('/posts/', () => {
 // });app.delete("/", (req, res) => {
 //     res.send("Delete request is successfully");
 // });
-app.listen(port, () => {
-  console.log(`Server is running at localhost:${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Server is running at localhost:${port}`);
+// });
